@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chip :to="'/about'"> GO to about</v-chip>
+    <v-chip :to="'/signup'"> GO to signUpForm</v-chip>
   </div>
 </template>
 
