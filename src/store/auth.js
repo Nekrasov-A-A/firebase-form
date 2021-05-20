@@ -25,5 +25,8 @@ export default {
     async getUserId() {
       return await firebase.auth().currentUser?.uid;
     },
+    async logout() {
+      await firebase.auth().signOut();
+    },
   },
 };
