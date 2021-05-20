@@ -3,7 +3,7 @@
     <v-app-bar app>
       something
       <v-spacer></v-spacer>
-      <v-btn @click="logout">Logout</v-btn>
+      <v-btn @click="logoutAndChangeRoute">Logout</v-btn>
     </v-app-bar>
     <v-main>
       <router-view />
@@ -14,6 +14,12 @@
 <script>
 import { mapActions } from "vuex";
 export default {
-  methods: mapActions(["logout"]),
+  methods: {
+    ...mapActions(["logout"]),
+    logoutAndChangeRoute() {
+      this.logout();
+      this.$router.push("/signin");
+    },
+  },
 };
 </script>

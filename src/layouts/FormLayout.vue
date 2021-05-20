@@ -35,6 +35,8 @@ export default {
   position: absolute;
   top: 5%;
   margin-top: 10px;
+  padding: 5px;
+  background-color: transparent;
   left: 50%;
   transform: translateX(-50%);
   color: white;
