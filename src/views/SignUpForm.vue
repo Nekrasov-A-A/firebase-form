@@ -66,7 +66,8 @@ export default {
         "Wrong email",
       (value) => value?.includes(".") || "Wrong email",
       (value) => value?.indexOf(".") <= value?.length - 2 || "Wrong email",
-      (value) => value?.indexOf(".") - value?.indexOf("@") > 1 || "Wrong email",
+      (value) =>
+        value?.lastIndexOf(".") - value?.indexOf("@") > 1 || "Wrong email",
     ],
     passwordRules: [
       (value) => !!value || `Can't be empty`,
