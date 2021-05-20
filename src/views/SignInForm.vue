@@ -1,6 +1,6 @@
 <template>
   <v-main>
-    <v-form @submit.prevent="onSubmit" ref="signUpForm">
+    <v-form @submit.prevent="onSubmit" ref="signInForm">
       <v-text-field type="email" label="Email" v-model="email"></v-text-field>
       <v-text-field
         type="password"
@@ -20,7 +20,6 @@
       <p>Don't have account?</p>
       <router-link to="/signup" class="pl-1">Sign Up</router-link>
     </div>
-    <div v-if="test">{{ testValue }}</div>
   </v-main>
 </template>
 
@@ -28,24 +27,23 @@
 export default {
   name: "SignInForm",
   data: () => ({
-    test: false,
-    testValue: "",
     email: "",
     password: "",
   }),
 
   methods: {
-    onSubmit() {
+    async onSubmit() {
       const formData = {
-        password: this.password,
         email: this.email,
+        password: this.password,
       };
-      this.showTestCase(formData);
-      this.$refs.signUpForm.reset();
-    },
-    showTestCase(value) {
-      this.test = true;
-      this.testValue = value;
+
+      try {
+        await this.$store.dispatch("login", formData);
+        this.$router.push("/");
+      } catch (e) {
+        this.$refs.signInForm.reset();
+      }
     },
   },
 };

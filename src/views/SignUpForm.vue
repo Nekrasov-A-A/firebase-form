@@ -4,7 +4,7 @@
       <v-text-field
         type="text"
         label="Username"
-        v-model="username"
+        v-model.trim="username"
         :rules="usernameRules"
       ></v-text-field>
       <v-text-field
@@ -49,7 +49,6 @@
         >submit</v-btn
       >
     </v-form>
-    <div v-if="test">{{ testValue }}</div>
   </v-main>
 </template>
 
@@ -57,8 +56,6 @@
 export default {
   name: "SignUpForm",
   data: () => ({
-    test: false,
-    testValue: "",
     username: "",
     email: "",
     password: "",
@@ -88,18 +85,18 @@ export default {
     checkbox: false,
   }),
   methods: {
-    onSubmit() {
+    async onSubmit() {
       const formData = {
-        name: this.username.trim(),
-        password: this.password,
         email: this.email,
+        password: this.password,
+        name: this.username,
       };
-      this.showTestCase(formData);
-      this.$refs.signUpForm.reset();
-    },
-    showTestCase(value) {
-      this.test = true;
-      this.testValue = value;
+      try {
+        await this.$store.dispatch("signUp", formData);
+        this.$router.push("/");
+      } catch (e) {
+        this.$refs.signUpForm.reset();
+      }
     },
   },
 };
