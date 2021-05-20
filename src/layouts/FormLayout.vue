@@ -10,7 +10,7 @@
 
 <style scoped>
 .my-wrap {
-  height: 60vh !important;
+  height: 60vh;
   width: 50%;
   margin: 0 auto;
   padding: 60px;
@@ -19,5 +19,11 @@
   align-items: center;
   border-radius: 16px;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.6);
+}
+@media screen and (max-width: 1023px) {
+  .my-wrap {
+    height: 80vh;
+    width: 80vw;
+  }
 }
 </style>
