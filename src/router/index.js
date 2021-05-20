@@ -23,6 +23,12 @@ const routes = [
     component: () => import("../views/SignUpForm.vue"),
     meta: { layout: "form" },
   },
+  {
+    path: "/signin",
+    name: "SignInForm",
+    component: () => import("../views/SignInForm.vue"),
+    meta: { layout: "form" },
+  },
 ];
 
 const router = new VueRouter({

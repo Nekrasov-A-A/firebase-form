@@ -23,23 +23,31 @@
         <template v-slot:label>
           <div>
             Accept cause
-            <v-tooltip bottom>
+            <v-tooltip right>
               <template v-slot:activator="{ on }">
                 <a
                   target="_blank"
                   href="https://ru.wiktionary.org/wiki/%D1%81%D0%BE%D0%B3%D0%BB%D0%B0%D1%81%D0%B8%D1%82%D1%8C%D1%81%D1%8F"
                   @click.stop
                   v-on="on"
+                  class="pl-1"
                 >
                   accept
                 </a>
               </template>
-              Opens in new window
+              <span>Opens in new window</span>
             </v-tooltip>
           </div>
         </template>
       </v-checkbox>
-      <v-btn outlined type="submit" :disabled="!formValidity">submit</v-btn>
+      <v-btn
+        class="pr-6 pl-6 ml-6 mt-5"
+        outlined
+        color="indigo darken-4"
+        type="submit"
+        :disabled="!formValidity"
+        >submit</v-btn
+      >
     </v-form>
     <div v-if="test">{{ testValue }}</div>
   </v-main>
@@ -71,7 +79,7 @@ export default {
     ],
     passwordRules: [
       (value) => !!value || `Can't be empty`,
-      (value) => value?.length > 6 || "min 6 symbols",
+      (value) => value?.length >= 6 || "min 6 symbols",
       (value) => !/[\s]/gi.test(value) || "Space in password? Stop kidding",
       (value) => /[0-9]/gi.test(value) || "Need any number in password",
     ],
