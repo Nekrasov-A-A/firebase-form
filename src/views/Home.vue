@@ -1,5 +1,5 @@
 <template>
-  <v-main>
+  <div>
     <div class="test">
       <v-chip :to="'/signup'"> GO to signUpForm</v-chip>
       <v-chip :to="'/signin'"> GO to signInForm</v-chip>
@@ -54,7 +54,7 @@
       ea, veniam blanditiis, modi nisi itaque possimus culpa sint illum mollitia
       quasi! Exercitationem, harum.
     </div>
-  </v-main>
+  </div>
 </template>
 
 <script>

@@ -14,17 +14,17 @@
       <template v-slot:img="{ props }">
         <v-img
           v-bind="props"
-          gradient="to top right, rgba(0,255,222,0.45451684091605393), rgba(255,0,10,0.8326681014202556)"
+          gradient="to top right, rgba(0,255,222,0.45451684091605393), rgba(0,255,192,0.2248249641653537)"
           position="center top 65%"
         ></v-img>
       </template>
-      <v-app-bar-title>SHOP</v-app-bar-title>
+      <v-toolbar-title class="align-self-center">SHOP</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items style="height: 100%">
         <v-btn text> Home </v-btn>
-        <v-divider vertical></v-divider>
+        <v-divider vertical class="white"></v-divider>
         <v-btn text> Catalog </v-btn>
-        <v-divider vertical></v-divider>
+        <v-divider vertical class="white"></v-divider>
         <v-btn @click="logoutAndChangeRoute" text>Logout</v-btn>
       </v-toolbar-items>
     </v-app-bar>
