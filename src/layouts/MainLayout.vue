@@ -3,7 +3,6 @@
     <v-app-bar
       color="cyan lighten-4"
       app
-      prominent
       shrink-on-scroll
       src="https://img.brandshop.ru/cache/products/m/main-air-jordan-1-retro-high-og-bloodline-pryzhok-v-nebo-z_1128x634.jpg"
       fade-img-on-scroll
@@ -25,7 +24,24 @@
         <v-divider vertical class="white"></v-divider>
         <v-btn text> Catalog </v-btn>
         <v-divider vertical class="white"></v-divider>
-        <v-btn @click="logoutAndChangeRoute" text>Logout</v-btn>
+
+        <v-menu open-on-hover bottom offset-y>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn v-bind="attrs" v-on="on" text>
+              {{ getCurrentUserName }} <v-icon>mdi-menu-down</v-icon>
+            </v-btn>
+          </template>
+          <v-list class="d-flex align-center" style="flex-direction: column">
+            <v-list-item>
+              <v-btn text>Settings</v-btn>
+            </v-list-item>
+            <v-list-item
+              ><v-btn @click="logoutAndChangeRoute" text
+                >Logout</v-btn
+              ></v-list-item
+            >
+          </v-list>
+        </v-menu>
       </v-toolbar-items>
     </v-app-bar>
 
@@ -36,14 +52,25 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
+
 export default {
+  computed: {
+    ...mapGetters(["getCurrentUserName"]),
+  },
   methods: {
-    ...mapActions(["logout"]),
+    ...mapActions(["logout", "getUserId", "fetchCurrentUser"]),
     logoutAndChangeRoute() {
       this.logout();
       this.$router.push("/signin");
     },
+  },
+  mounted: async function () {
+    if (!this.getCurrentUserName) {
+      const user = await this.getUserId();
+      this.fetchCurrentUser(user);
+      console.log(user);
+    }
   },
 };
 </script>

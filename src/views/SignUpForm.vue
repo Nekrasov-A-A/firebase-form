@@ -62,6 +62,7 @@ export default {
     usernameRules: [
       (value) => !!value || `Can't be empty`,
       (value) => value?.trim().length !== 0 || "Only space, right?",
+      (value) => value?.trim().length < 15 || "Maximum 15 characters ",
     ],
     emailRules: [
       (value) => !!value || `Can't be empty`,

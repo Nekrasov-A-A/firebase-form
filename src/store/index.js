@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import productCard from "./modules/productCard";
 import auth from "./auth";
+import currentUser from "./currentUser";
 
 Vue.use(Vuex);
 
@@ -20,5 +21,5 @@ export default new Vuex.Store({
       }, 3000);
     },
   },
-  modules: { auth, productCard },
+  modules: { auth, productCard, currentUser },
 });

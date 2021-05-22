@@ -22,11 +22,9 @@ export default {
         throw e;
       }
     },
+
     async getUserId() {
       return await firebase.auth().currentUser?.uid;
-    },
-    async logout() {
-      await firebase.auth().signOut();
     },
   },
 };
