@@ -69,7 +69,6 @@ export default {
     if (!this.getCurrentUserName) {
       const user = await this.getUserId();
       this.fetchCurrentUser(user);
-      console.log(user);
     }
   },
 };
