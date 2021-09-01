@@ -1,6 +1,8 @@
 <template>
   <div>
-    <div class="test">HELLO</div>
+    <div class="wrapper">
+      <h1>Thanks for testing!</h1>
+    </div>
   </div>
 </template>
 
@@ -15,11 +17,11 @@ export default {
 };
 </script>
 
-<style scoped>
-.test {
-  height: 200vh !important;
-}
-.hello {
-  background-color: red;
-}
+<style lang="sass" scoped>
+.wrapper
+  min-height: 200vh !important
+  display: flex
+  justify-content: center
+  > h1
+    margin-top: 50px
 </style>
